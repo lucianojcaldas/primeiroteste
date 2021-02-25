@@ -1,0 +1,79 @@
+package exer1b;
+
+import java.io.*;
+import java.util.*;
+
+public class progCriar {
+	public static void main(String args[]) throws IOException {
+		String vallog = "b1.txt";
+		
+		Scanner nome= new Scanner(System.in);
+		String nomeArquivo;
+		System.out.println("Digite o nome do arquivo");
+		nomeArquivo = nome.nextLine();
+	//	nome.close();
+		
+		
+
+		String str;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedReader na = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Digite o texto:\n Para sair e salvar o texto em blco de notas (.txt) digite: 'SALVAR'.");
+
+		
+	
+		
+		
+		try (FileWriter fw = new FileWriter(nomeArquivo)) {
+			do {
+				System.out.println("| ");
+				str = br.readLine();
+				if (str.compareTo("stop") == 0)
+					break;
+				str = str + "\r\n";
+				fw.write(str);
+			} while (str.compareTo("stop") != 0);
+
+			// System.out.println("digite o nome do arquivo com a extensão, exmplo:
+			// teste.txt");
+			System.out.println("Arquivo gravado com sucesso");
+
+		} catch (IOException exc) {
+			System.out.println("io Erro: " + exc);
+		}
+
+	}
+
+}
+/*
+ * 
+ * package java2Semana1b;
+ * 
+ * import java.io.BufferedReader; import java.io.BufferedWriter; import
+ * java.io.FileOutputStream; import java.io.IOException; import
+ * java.io.InputStreamReader; import java.io.OutputStream; import
+ * java.io.OutputStreamWriter; import java.io.Reader; import java.io.Writer;
+ * import java.io.BufferedInputStream; import java.io.InputStream;
+ * 
+ * public class ProgramaParaEscreverArquivoTXT {
+ * 
+ * public static void main(String[] args) throws IOException {
+ * 
+ * InputStream fis = System.in; Reader isr = new InputStreamReader(fis);
+ * BufferedReader br = new BufferedReader(isr);
+ * 
+ * OutputStream fos = new FileOutputStream("luciano.txt"); Writer osw = new
+ * OutputStreamWriter(fos); BufferedWriter bw = new BufferedWriter(osw);
+ * 
+ * String linha = br.readLine();
+ * 
+ * while (linha != null && !linha.isEmpty()) { bw.write(linha); bw.newLine(); }
+ * 
+ * br.close(); bw.close();
+ * 
+ * }
+ * 
+ * }
+ * 
+ */

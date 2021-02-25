@@ -1,0 +1,29 @@
+package exer1b;
+
+import java.io.*;
+
+public class progCriar {
+	public static void main(String args[]) {
+String vallog = "b1.txt";
+		String str;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Digite o texto:\n Para sair e salvar o texto em blco de notas (.txt) digite 'SALVAR'.");
+
+
+		try (FileWriter fw = new FileWriter(vallog)) {
+			do {
+				System.out.println(": ");
+				str = br.readLine();
+				if (str.compareTo("stop") == 0)
+					break;
+				str = str + "\r\n";
+				fw.write(str);
+			} while (str.compareTo("stop") != 0);
+		} catch (IOException exc) {
+			System.out.println("io Erro: " + exc);
+		}
+
+	}
+
+}

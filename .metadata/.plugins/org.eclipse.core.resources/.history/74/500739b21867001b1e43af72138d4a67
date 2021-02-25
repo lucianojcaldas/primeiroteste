@@ -1,0 +1,40 @@
+package exer1b;
+
+import java.io.*;
+import java.util.*;
+
+public class progCriar {
+	public static void main(String args[]) throws IOException {
+		String vallog = "b1.txt";
+
+		Scanner nome = new Scanner(System.in);
+		String nomeArquivo;
+		System.out.println("Digite o nome do arquivo para salar em blco de notas (.txt)");
+		nomeArquivo = nome.nextLine();
+
+		String str;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Digite o texto:\n Para sair e salvar digite: 'salvar'");
+
+		try (FileWriter fw = new FileWriter(nomeArquivo)) {
+			do {
+				System.out.println("| ");
+				str = br.readLine();
+				if (str.compareTo("salvar") == 0)
+					break;
+				str = str + "\r\n";
+				fw.write(str);
+			} while (str.compareTo("salvar") != 0);
+
+			
+			System.out.println("Arquivo gravado com sucesso!");
+
+		} catch (IOException exc) {
+			System.out.println("io Erro: " + exc);
+		}
+
+	}
+
+}
+
